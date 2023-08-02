@@ -1,6 +1,6 @@
 {
   "name": "create-quaff",
-  "version": "0.0.1",
+  "version": "0.1.0-prealpha",
   "description": "",
   "type": "module",
   "bin": "dist/bin.js",
