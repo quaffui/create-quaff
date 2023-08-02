@@ -3,6 +3,7 @@ import executePrompts from "./execute-prompts.js";
 import { readFile, writeFile, mkdir } from "fs/promises";
 import { join } from "path";
 import { create } from "create-svelte";
+import getLatestDependencyVersion from "./helpers/get-latest-dependency-version.js";
 import install from "./helpers/install.js";
 import type { PackageJson } from "./types.js";
 
@@ -14,6 +15,11 @@ const {
   optionalFeatures,
   installDependencies,
 } = await executePrompts();
+
+enum Packages {
+  QUAFF = "@quaffui/quaff",
+  SASS = "sass",
+}
 
 await mkdir(projectDir);
 
@@ -53,11 +59,11 @@ async function addToPackageJson(object: Partial<PackageJson>) {
 }
 
 const devDependencies: PackageJson["devDependencies"] = {
-  "@quaffui/quaff": "0.1.0-prealpha",
+  [Packages.QUAFF]: await getLatestDependencyVersion(Packages.QUAFF),
 };
 
 if (["scss", "sass"].includes(cssPreprocessor)) {
-  devDependencies.sass = "^1.64.2";
+  devDependencies[Packages.SASS] = await getLatestDependencyVersion(Packages.SASS);
 }
 
 await addToPackageJson({
