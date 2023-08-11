@@ -6,7 +6,7 @@ import getLatestDependencyVersion from "./helpers/get-latest-dependency-version.
 import install from "./helpers/install.js";
 import { Packages } from "./types.js";
 import AddAutoimportCommand from "./commands/add-autoimport/AddAutoimportCommand.js";
-import { addToPackageJson } from "./helpers/add-to-package-json";
+import addToPackageJson from "./helpers/add-to-package-json.js";
 import type { PackageJson } from "./types.js";
 
 const {

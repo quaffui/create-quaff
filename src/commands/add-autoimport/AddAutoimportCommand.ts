@@ -2,7 +2,7 @@ import getLatestDependencyVersion from "../../helpers/get-latest-dependency-vers
 import { Packages } from "../../types.js";
 import { join } from "path";
 import { readFile, writeFile } from "fs/promises";
-import { addToPackageJson } from "../../helpers/add-to-package-json";
+import addToPackageJson from "../../helpers/add-to-package-json.js";
 import pathExists from "../../helpers/path-exists.js";
 import mkdirp from "../../helpers/mkdirp.js";
 

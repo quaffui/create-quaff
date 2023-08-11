@@ -2,7 +2,7 @@ import { join } from "path";
 import { readFile, writeFile } from "fs/promises";
 import type { PackageJson } from "../types";
 
-export async function addToPackageJson(projectDir: string, object: Partial<PackageJson>) {
+export default async function addToPackageJson(projectDir: string, object: Partial<PackageJson>) {
   const packageJsonPath = join(projectDir, "package.json");
   const fileJson = JSON.parse(await readFile(packageJsonPath, "utf8"));
 
