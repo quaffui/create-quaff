@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 import executePrompts from "./execute-prompts.js";
-import { readFile, writeFile, mkdir } from "fs/promises";
-import { join } from "path";
+import { mkdir } from "fs/promises";
 import { create } from "create-svelte";
 import getLatestDependencyVersion from "./helpers/get-latest-dependency-version.js";
 import install from "./helpers/install.js";
+import { Packages } from "./types.js";
+import AddAutoimportCommand from "./commands/add-autoimport/AddAutoimportCommand.js";
+import { addToPackageJson } from "./helpers/add-to-package-json";
 import type { PackageJson } from "./types.js";
 
 const {
@@ -15,15 +17,6 @@ const {
   optionalFeatures,
   installDependencies,
 } = await executePrompts();
-
-enum Packages {
-  QUAFF = "@quaffui/quaff",
-  SASS = "sass",
-  FONTSOURCE_MATERIAL_SYMBOLS_OUTLINED = "@fontsource/material-symbols-outlined",
-  FONTSOURCE_MATERIAL_SYMBOLS_ROUNDED = "@fontsource/material-symbols-rounded",
-  FONTSOURCE_MATERIAL_SYMBOLS_SHARP = "@fontsource/material-symbols-sharp",
-  FONTSOURCE_ROBOTO = "@fontsource/roboto",
-}
 
 await mkdir(projectDir);
 
@@ -36,31 +29,6 @@ await create(projectDir, {
   playwright: false,
   vitest: false,
 });
-
-async function addToPackageJson(object: Partial<PackageJson>) {
-  const packageJsonPath = join(projectDir, "package.json");
-  const fileJson = JSON.parse(await readFile(packageJsonPath, "utf8"));
-
-  const dependencies = object.dependencies;
-  const devDependencies = object.devDependencies;
-
-  // Object.assign doesn't support deep merging, so we do this manually for dependencies
-  if (dependencies) {
-    Object.assign(fileJson.dependencies, dependencies);
-  }
-
-  if (devDependencies) {
-    Object.assign(fileJson.devDependencies, devDependencies);
-  }
-
-  // delete these afterwards to not overwrite what we did above
-  delete object.dependencies;
-  delete object.devDependencies;
-
-  Object.assign(fileJson, object);
-
-  await writeFile(packageJsonPath, JSON.stringify(fileJson, null, 2));
-}
 
 const devDependencies: PackageJson["devDependencies"] = {
   [Packages.QUAFF]: await getLatestDependencyVersion(Packages.QUAFF),
@@ -80,9 +48,13 @@ if (["scss", "sass"].includes(cssPreprocessor)) {
   devDependencies[Packages.SASS] = await getLatestDependencyVersion(Packages.SASS);
 }
 
-await addToPackageJson({
+await addToPackageJson(projectDir, {
   devDependencies,
 });
+
+const addAutoimportCommand = new AddAutoimportCommand(projectDir, language);
+
+await addAutoimportCommand.execute();
 
 if (installDependencies && installDependencies !== "no") {
   await install(projectDir, installDependencies);
