@@ -19,6 +19,10 @@ const {
 enum Packages {
   QUAFF = "@quaffui/quaff",
   SASS = "sass",
+  FONTSOURCE_MATERIAL_SYMBOLS_OUTLINED = "@fontsource/material-symbols-outlined",
+  FONTSOURCE_MATERIAL_SYMBOLS_ROUNDED = "@fontsource/material-symbols-rounded",
+  FONTSOURCE_MATERIAL_SYMBOLS_SHARP = "@fontsource/material-symbols-sharp",
+  FONTSOURCE_ROBOTO = "@fontsource/roboto",
 }
 
 await mkdir(projectDir);
@@ -60,6 +64,16 @@ async function addToPackageJson(object: Partial<PackageJson>) {
 
 const devDependencies: PackageJson["devDependencies"] = {
   [Packages.QUAFF]: await getLatestDependencyVersion(Packages.QUAFF),
+  [Packages.FONTSOURCE_MATERIAL_SYMBOLS_OUTLINED]: await getLatestDependencyVersion(
+    Packages.FONTSOURCE_MATERIAL_SYMBOLS_OUTLINED
+  ),
+  [Packages.FONTSOURCE_MATERIAL_SYMBOLS_ROUNDED]: await getLatestDependencyVersion(
+    Packages.FONTSOURCE_MATERIAL_SYMBOLS_ROUNDED
+  ),
+  [Packages.FONTSOURCE_MATERIAL_SYMBOLS_SHARP]: await getLatestDependencyVersion(
+    Packages.FONTSOURCE_MATERIAL_SYMBOLS_SHARP
+  ),
+  [Packages.FONTSOURCE_ROBOTO]: await getLatestDependencyVersion(Packages.FONTSOURCE_ROBOTO),
 };
 
 if (["scss", "sass"].includes(cssPreprocessor)) {
