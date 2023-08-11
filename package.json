@@ -14,9 +14,11 @@
   "license": "ISC",
   "dependencies": {
     "create-svelte": "^5.0.4",
+    "mustache": "^4.2.0",
     "prompts": "^2.4.2"
   },
   "devDependencies": {
+    "@types/mustache": "^4.2.2",
     "@types/prompts": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",

@@ -6,10 +6,12 @@ import getLatestDependencyVersion from "./helpers/get-latest-dependency-version.
 import install from "./helpers/install.js";
 import { Packages } from "./types.js";
 import AddAutoimportCommand from "./commands/add-autoimport/AddAutoimportCommand.js";
+import AddBoilerplateCommand from "./commands/add-boilerplate/AddBoilerplateCommand.js";
 import addToPackageJson from "./helpers/add-to-package-json.js";
 import type { PackageJson } from "./types.js";
 
 const {
+  projectName,
   projectDir,
   packageName,
   language,
@@ -55,6 +57,10 @@ await addToPackageJson(projectDir, {
 const addAutoimportCommand = new AddAutoimportCommand(projectDir, language);
 
 await addAutoimportCommand.execute();
+
+const addBoilerplateCommand = new AddBoilerplateCommand(projectDir, projectName, cssPreprocessor);
+
+await addBoilerplateCommand.execute();
 
 if (installDependencies && installDependencies !== "no") {
   await install(projectDir, installDependencies);

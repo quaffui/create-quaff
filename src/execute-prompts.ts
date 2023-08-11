@@ -105,6 +105,7 @@ export default async function executePrompts() {
   }
 
   return {
+    projectName,
     projectDir,
     language,
     packageName,
