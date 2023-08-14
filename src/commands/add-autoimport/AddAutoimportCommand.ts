@@ -18,6 +18,7 @@ const quaffComponents = [
   "QDialog",
   "QDrawer",
   "QFooter",
+  "QHeader",
   "QIcon",
   "QInput",
   "QSelect",

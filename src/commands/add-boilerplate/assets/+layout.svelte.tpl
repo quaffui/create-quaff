@@ -4,7 +4,7 @@
 </script>
 
 <QLayout class="main-layout" leftRailbarWidth="120">
-	<QToolbar slot="header" class="elevate-2">
+	<QHeader slot="header" class="elevate-2">
 		<QToolbarTitle>{{projectName}}</QToolbarTitle>
 		<QBtn
 			icon={$Quaff.dark.isActive ? 'light_mode' : 'dark_mode'}
@@ -13,7 +13,7 @@
 			on:click={$Quaff.dark.toggle}
 		/>
 		<QBtn icon="help" flat />
-	</QToolbar>
+	</QHeader>
 	<QRailbar slot="railbarLeft" class="surface no-round" bordered>
 		<QList>
 			<QItem to="/">
