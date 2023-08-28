@@ -54,7 +54,7 @@ export default class AddBoilerplateCommand {
       BoilerplateFiles.APP,
       appContents.replace(
         '<body data-sveltekit-preload-data="hover">',
-        '<body data-sveltekit-preload-data="hover" class="light">'
+        '<body data-sveltekit-preload-data="hover" class="body--light">'
       )
     );
   }
