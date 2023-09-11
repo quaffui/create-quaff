@@ -1,4 +1,4 @@
-export type PackageManager = "pnpm" | "yarn" | "npm";
+export type PackageManager = "pnpm" | "yarn" | "npm" | "bun";
 
 export type PackageJson = {
   dependencies: {
