@@ -13,19 +13,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "create-svelte": "^5.0.4",
+    "create-svelte": "^5.0.5",
     "mustache": "^4.2.0",
     "prompts": "^2.4.2"
   },
   "devDependencies": {
     "@types/mustache": "^4.2.2",
     "@types/prompts": "^2.4.4",
-    "@typescript-eslint/eslint-plugin": "^6.2.0",
-    "@typescript-eslint/parser": "^6.2.0",
-    "eslint": "^8.46.0",
-    "eslint-config-prettier": "^8.9.0",
-    "prettier": "^3.0.0",
-    "typescript": "^5.1.6",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2",
     "typescript-cp": "^0.1.9"
   }
 }
