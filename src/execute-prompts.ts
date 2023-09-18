@@ -12,7 +12,7 @@ function exitIfUndefined(val: unknown, code = 1) {
 }
 
 export default async function executePrompts() {
-  let { projectName } = await prompts({
+  const { projectName } = await prompts({
     type: "text",
     name: "projectName",
     message: "What is the name of your project?",
@@ -22,7 +22,7 @@ export default async function executePrompts() {
 
   exitIfUndefined(projectName);
 
-  let { projectDir } = await prompts({
+  const { projectDir } = await prompts({
     type: "text",
     name: "projectDir",
     message: "Where should your project be created?",
@@ -33,7 +33,7 @@ export default async function executePrompts() {
 
   exitIfUndefined(projectDir);
 
-  let { language } = await prompts({
+  const { language } = await prompts({
     type: "select",
     name: "language",
     message: "Pick a language",
@@ -46,7 +46,7 @@ export default async function executePrompts() {
 
   exitIfUndefined(language);
 
-  let { packageName } = await prompts({
+  const { packageName } = await prompts({
     type: "text",
     name: "packageName",
     message: "Package name (package.json)?",
@@ -57,7 +57,7 @@ export default async function executePrompts() {
 
   exitIfUndefined(packageName);
 
-  let { cssPreprocessor } = await prompts({
+  const { cssPreprocessor } = await prompts({
     type: "select",
     name: "cssPreprocessor",
     message: "Add a CSS preprocessor?",
@@ -71,7 +71,7 @@ export default async function executePrompts() {
 
   exitIfUndefined(cssPreprocessor);
 
-  let { optionalFeatures } = await prompts({
+  const { optionalFeatures } = await prompts({
     type: "multiselect",
     name: "optionalFeatures",
     message: "Add optional features?",
@@ -87,10 +87,10 @@ export default async function executePrompts() {
 
   exitIfUndefined(optionalFeatures);
 
-  var installDependencies: PackageManager | "no" | undefined;
+  let installDependencies: PackageManager | "no" | undefined;
 
   if (packageManagers.length) {
-    var { installDependencies } = (await prompts({
+    const answerInstall = (await prompts({
       type: "select",
       name: "installDependencies",
       message: "Install dependencies now?",
@@ -101,7 +101,9 @@ export default async function executePrompts() {
       ],
     })) as { installDependencies: PackageManager | "no" | undefined };
 
-    exitIfUndefined(installDependencies);
+    exitIfUndefined(answerInstall.installDependencies);
+
+    installDependencies = answerInstall.installDependencies;
   }
 
   return {

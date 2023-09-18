@@ -12,11 +12,4 @@ module.exports = {
     es2017: true,
     node: true,
   },
-  "prefer-const": [
-    "error",
-    {
-      destructuring: "all",
-      ignoreReadBeforeAssign: false,
-    },
-  ],
 };
