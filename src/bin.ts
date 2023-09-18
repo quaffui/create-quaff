@@ -34,15 +34,7 @@ await create(projectDir, {
 
 const devDependencies: PackageJson["devDependencies"] = {
   [Packages.QUAFF]: await getLatestDependencyVersion(Packages.QUAFF),
-  [Packages.FONTSOURCE_MATERIAL_SYMBOLS_OUTLINED]: await getLatestDependencyVersion(
-    Packages.FONTSOURCE_MATERIAL_SYMBOLS_OUTLINED
-  ),
-  [Packages.FONTSOURCE_MATERIAL_SYMBOLS_ROUNDED]: await getLatestDependencyVersion(
-    Packages.FONTSOURCE_MATERIAL_SYMBOLS_ROUNDED
-  ),
-  [Packages.FONTSOURCE_MATERIAL_SYMBOLS_SHARP]: await getLatestDependencyVersion(
-    Packages.FONTSOURCE_MATERIAL_SYMBOLS_SHARP
-  ),
+  [Packages.MATERIAL_SYMBOLS]: await getLatestDependencyVersion(Packages.MATERIAL_SYMBOLS),
   [Packages.FONTSOURCE_ROBOTO]: await getLatestDependencyVersion(Packages.FONTSOURCE_ROBOTO),
 };
 

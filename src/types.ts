@@ -12,9 +12,7 @@ export type PackageJson = {
 export enum Packages {
   QUAFF = "@quaffui/quaff",
   SASS = "sass",
-  FONTSOURCE_MATERIAL_SYMBOLS_OUTLINED = "@fontsource/material-symbols-outlined",
-  FONTSOURCE_MATERIAL_SYMBOLS_ROUNDED = "@fontsource/material-symbols-rounded",
-  FONTSOURCE_MATERIAL_SYMBOLS_SHARP = "@fontsource/material-symbols-sharp",
   FONTSOURCE_ROBOTO = "@fontsource/roboto",
+  MATERIAL_SYMBOLS = "material-symbols",
   SVELTEKIT_AUTOIMPORT = "sveltekit-autoimport",
 }

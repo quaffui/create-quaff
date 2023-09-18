@@ -90,20 +90,28 @@ export default class AddBoilerplateCommand {
 
     await mkdirp(stylesPath);
 
-    const styleImports = [
-      "@quaffui/quaff/css/index.css",
-      Packages.FONTSOURCE_MATERIAL_SYMBOLS_OUTLINED,
-      Packages.FONTSOURCE_MATERIAL_SYMBOLS_ROUNDED,
-      Packages.FONTSOURCE_MATERIAL_SYMBOLS_SHARP,
-      Packages.FONTSOURCE_ROBOTO,
-    ];
+    const styleImports = ["@quaffui/quaff/css/index.css", Packages.FONTSOURCE_ROBOTO];
 
     const mapStyle =
       this.styleExtension === "sass"
         ? (name: string) => `@import ${name}`
         : (name: string) => `@import "${name}";`;
 
-    const contents = styleImports.map(mapStyle).join("\n") + "\n";
+    const fontFaces = ["Outlined", "Rounded", "Sharp"]
+      .map(
+        (name: string) => `
+@font-face {
+  font-family: "Material Symbols ${name}";
+  src: url("material-symbols/material-symbols-${name.toLowerCase()}.woff2") format("woff2");
+
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: block;
+}`
+      )
+      .join("\n");
+
+    const contents = styleImports.map(mapStyle).join("\n") + "\n" + fontFaces + "\n";
 
     await this.writeProjectFile(`src/styles/app.${this.styleExtension}`, contents);
   }
