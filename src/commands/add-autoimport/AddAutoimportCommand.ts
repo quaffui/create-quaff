@@ -1,9 +1,9 @@
-import getLatestDependencyVersion from "../../helpers/get-latest-dependency-version.js";
-import { Packages } from "../../types.js";
 import { join } from "path";
 import { readFile, writeFile } from "fs/promises";
-import addToPackageJson from "../../helpers/add-to-package-json.js";
-import pathExists from "../../helpers/path-exists.js";
+import getLatestDependencyVersion from "../../helpers/getLatestDependencyVersion.js";
+import { Packages } from "../../types.js";
+import addToPackageJson from "../../helpers/addToPackageJson.js";
+import pathExists from "../../helpers/pathExists.js";
 import mkdirp from "../../helpers/mkdirp.js";
 
 const quaffComponents = [
@@ -129,7 +129,7 @@ ${quaffComponents
 
       const contentsRaw = await readFile(filePath, "utf8");
       return JSON.parse(contentsRaw) || {};
-    } catch (e) {
+    } catch {
       return {};
     }
   }

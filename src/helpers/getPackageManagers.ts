@@ -1,6 +1,6 @@
 import { exec } from "child_process";
 import { promisify } from "util";
-import { PackageManager } from "../types.js";
+import type { PackageManager } from "../types.js";
 
 const execPromise = promisify(exec);
 
