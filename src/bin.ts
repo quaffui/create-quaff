@@ -1,13 +1,13 @@
 #!/usr/bin/env node
-import executePrompts from "./execute-prompts.js";
 import { mkdir } from "fs/promises";
 import { create } from "create-svelte";
-import getLatestDependencyVersion from "./helpers/get-latest-dependency-version.js";
+import executePrompts from "./executePrompts.js";
+import getLatestDependencyVersion from "./helpers/getLatestDependencyVersion.js";
 import install from "./helpers/install.js";
 import { Packages } from "./types.js";
 import AddAutoimportCommand from "./commands/add-autoimport/AddAutoimportCommand.js";
 import AddBoilerplateCommand from "./commands/add-boilerplate/AddBoilerplateCommand.js";
-import addToPackageJson from "./helpers/add-to-package-json.js";
+import addToPackageJson from "./helpers/addToPackageJson.js";
 import type { PackageJson } from "./types.js";
 
 const {

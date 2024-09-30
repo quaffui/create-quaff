@@ -1,7 +1,7 @@
 import prompts from "prompts";
-import getPackageManagers from "./helpers/get-package-managers.js";
-import toKebabCase from "./helpers/to-kebab-case.js";
-import { PackageManager } from "./types.js";
+import getPackageManagers from "./helpers/getPackageManagers.js";
+import toKebabCase from "./helpers/toKebabCase.js";
+import type { PackageManager } from "./types.js";
 
 const packageManagers = await getPackageManagers();
 
