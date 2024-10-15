@@ -3,7 +3,9 @@
   "version": "0.1.0-prealpha8",
   "description": "",
   "type": "module",
-  "bin": "dist/bin.js",
+  "bin": {
+    "create-quaff": "dist/bin.js"
+  },
   "scripts": {
     "check": "bunx tsc --noEmit",
     "lint": "prettier --check . && eslint .",
