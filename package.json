@@ -8,7 +8,7 @@
     "check": "bunx tsc --noEmit",
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write . && eslint --fix .",
-    "prepublishOnly": "bunx tsc && tscp"
+    "prepublishOnly": "bunx tsc && bunx tscp"
   },
   "keywords": [],
   "author": "",
