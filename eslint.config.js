@@ -23,6 +23,7 @@ export default [
     ignores: [
       "node_modules/",
       "dist/",
+      "bun.lockb",
       "pnpm-lock.yaml",
       "package-lock.json",
       "yarn.lock",

@@ -14,7 +14,7 @@ async function checkPackageManager(name: PackageManager): Promise<boolean> {
 }
 
 export default async function getPackageManagers() {
-  const packageManagers: PackageManager[] = ["npm", "yarn", "pnpm", "bun"];
+  const packageManagers: PackageManager[] = ["bun", "yarn", "pnpm", "npm"];
   const availablePackageManagers: PackageManager[] = [];
 
   for (const packageManager of packageManagers) {
