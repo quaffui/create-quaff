@@ -30,6 +30,7 @@ await create(projectDir, {
   eslint: optionalFeatures.includes("eslintAndPrettier"),
   playwright: false,
   vitest: false,
+  svelte5: true,
 });
 
 const devDependencies: PackageJson["devDependencies"] = {
