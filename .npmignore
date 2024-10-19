@@ -1,3 +1,4 @@
+.github/
 src/
 node_modules/
 
@@ -6,3 +7,9 @@ bun.lockb
 pnpm-lock.yaml
 package-lock.json
 yarn.lock
+
+# Ignore misc files
+.prettierignore
+.prettierrc
+eslint.config.js
+tsconfig.json
