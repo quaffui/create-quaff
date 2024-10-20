@@ -1,14 +1,16 @@
 {
   "name": "create-quaff",
-  "version": "0.1.0-prealpha8",
+  "version": "0.1.0-prealpha11",
   "description": "",
   "type": "module",
-  "bin": "dist/bin.js",
+  "bin": {
+    "create-quaff": "./dist/bin.js"
+  },
   "scripts": {
     "check": "bunx tsc --noEmit",
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write . && eslint --fix .",
-    "prepublishOnly": "bunx tsc && tscp"
+    "prepublishOnly": "bunx tsc && bunx tscp"
   },
   "keywords": [],
   "author": "",
