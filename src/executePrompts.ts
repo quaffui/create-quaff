@@ -40,6 +40,7 @@ export default async function executePrompts() {
     initial: 0,
     choices: [
       { title: "TypeScript", value: "typescript" },
+      { title: "JavaScript (with TS via JSDoc)", value: "checkjs" },
       { title: "JavaScript", value: "javascript" },
     ],
   });

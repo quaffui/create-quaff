@@ -16,9 +16,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "create-svelte": "^7.0.0",
     "mustache": "^4.2.0",
-    "prompts": "^2.4.2"
+    "prompts": "^2.4.2",
+    "sv": "^0.6.5"
   },
   "devDependencies": {
     "@types/mustache": "^4.2.5",
