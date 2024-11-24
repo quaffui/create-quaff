@@ -94,8 +94,8 @@ export default class AddBoilerplateCommand {
 
     const mapStyle =
       this.styleExtension === "sass"
-        ? (name: string) => `@import ${name}`
-        : (name: string) => `@import "${name}";`;
+        ? (name: string) => `@use ${name}`
+        : (name: string) => `@use "${name}";`;
 
     const fontFaces = ["Outlined", "Rounded", "Sharp"]
       .map(
