@@ -9,12 +9,14 @@ enum BoilerplateFiles {
   LAYOUT = "src/routes/+layout.svelte",
   PAGE = "src/routes/+page.svelte",
   FAVICON = "static/favicon.png",
+  AUTOIMPORT_TYPES = "src/sveltekit-autoimport.d.ts",
 }
 
 enum BoilerplateTemplateFiles {
   LAYOUT = "assets/+layout.svelte.tpl",
   PAGE = "assets/+page.svelte.tpl",
   FAVICON = "assets/favicon.png",
+  AUTOIMPORT_TYPES = "assets/sveltekit-autoimport.d.ts.tpl",
 }
 
 export default class AddBoilerplateCommand {
@@ -29,11 +31,15 @@ export default class AddBoilerplateCommand {
   }
 
   async readProjectFile(relativePath: string) {
-    return await readFile(join(this.projectDir, relativePath), "utf8");
+    return await readFile(this.getProjectPath(relativePath), "utf8");
   }
 
   async writeProjectFile(relativePath: string, contents: string) {
-    return await writeFile(join(this.projectDir, relativePath), contents, "utf8");
+    return await writeFile(this.getProjectPath(relativePath), contents, "utf8");
+  }
+
+  getProjectPath(relativePath: string) {
+    return join(this.projectDir, relativePath);
   }
 
   async execute() {
@@ -46,6 +52,8 @@ export default class AddBoilerplateCommand {
     await this.createStyles();
 
     await this.copyFavicon();
+
+    await this.createAutoimportTypes();
   }
 
   async addLightClassToApp() {
@@ -86,7 +94,7 @@ export default class AddBoilerplateCommand {
   }
 
   async createStyles() {
-    const stylesPath = join(this.projectDir, "src", "styles");
+    const stylesPath = this.getProjectPath("src/styles");
 
     await mkdirp(stylesPath);
 
@@ -119,7 +127,15 @@ export default class AddBoilerplateCommand {
   async copyFavicon() {
     await copyFile(
       new URL(BoilerplateTemplateFiles.FAVICON, import.meta.url),
-      join(this.projectDir, BoilerplateFiles.FAVICON)
+      this.getProjectPath(BoilerplateFiles.FAVICON)
+    );
+  }
+
+  async createAutoimportTypes() {
+    // no render needed; only using .tpl to avoid issues with .d.ts in this project
+    await copyFile(
+      new URL(BoilerplateTemplateFiles.AUTOIMPORT_TYPES, import.meta.url),
+      this.getProjectPath(BoilerplateFiles.AUTOIMPORT_TYPES)
     );
   }
 }
