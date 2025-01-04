@@ -1,3 +1,9 @@
+import fetch from "./fetch.js";
+
+type PackageData = {
+  version: string;
+};
+
 export default async function getLatestDependencyVersion(packageName: string): Promise<string> {
   const response = await fetch(`https://registry.npmjs.org/${packageName}/latest`);
 
@@ -5,7 +11,7 @@ export default async function getLatestDependencyVersion(packageName: string): P
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
-  const packageData = await response.json();
+  const packageData = (await response.json()) as PackageData;
   let { version } = packageData;
 
   if (!version || typeof version !== "string") {
