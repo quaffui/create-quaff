@@ -54,8 +54,9 @@ await create(projectDir, {
 
 // until we know what the programmatic call to "sv" is
 if (optionalFeatures.includes("eslintAndPrettier")) {
-  await installAddon("eslint", packageManagerForAddons, projectDir);
-  await installAddon("prettier", packageManagerForAddons, projectDir);
+  const packageManagerForAddonsOrFallback = packageManagerForAddons ?? "npm";
+  await installAddon("eslint", packageManagerForAddonsOrFallback, projectDir);
+  await installAddon("prettier", packageManagerForAddonsOrFallback, projectDir);
 }
 
 const devDependencies: PackageJson["devDependencies"] = {
