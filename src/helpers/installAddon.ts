@@ -7,7 +7,7 @@ export default async function installAddon(
   packageManager: PackageManager,
   projectDir: string
 ) {
-  const cmdAndArgs = ["sv", "add", addon];
+  const cmdAndArgs: string[] = ["sv", "add", addon];
 
   if (packageManager === "bun") {
     cmdAndArgs.unshift("bunx");
@@ -23,7 +23,7 @@ export default async function installAddon(
 
   cmdAndArgs.push("--no-preconditions", "--no-install");
 
-  return await runCmdAndAssertSuccess(cmdAndArgs[0], cmdAndArgs.slice(1), projectDir);
+  return await runCmdAndAssertSuccess(cmdAndArgs[0]!, cmdAndArgs.slice(1), projectDir);
 }
 
 function runCmdAndAssertSuccess(cmd: string, args: string[], cwd: string): Promise<void> {
