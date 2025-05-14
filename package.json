@@ -18,19 +18,19 @@
   "dependencies": {
     "mustache": "^4.2.0",
     "prompts": "^2.4.2",
-    "sv": "^0.8.0",
-    "undici": "^7.8.0"
+    "sv": "^0.8.3",
+    "undici": "^7.9.0"
   },
   "devDependencies": {
-    "@types/mustache": "^4.2.5",
+    "@types/mustache": "^4.2.6",
     "@types/prompts": "^2.4.9",
-    "@typescript-eslint/eslint-plugin": "^8.29.1",
-    "@typescript-eslint/parser": "^8.29.1",
-    "bun-types": "^1.2.9",
-    "eslint": "^9.24.0",
-    "eslint-config-prettier": "^10.1.2",
-    "eslint-plugin-import-x": "^4.10.2",
-    "eslint-plugin-unicorn": "^58.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "bun-types": "^1.2.13",
+    "eslint": "^9.26.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import-x": "^4.11.1",
+    "eslint-plugin-unicorn": "^59.0.1",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3",
     "typescript-cp": "^0.1.9"
