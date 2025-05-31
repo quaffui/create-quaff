@@ -16,7 +16,7 @@
     </div>
     <div class="col-12 flex">
       <QCheckbox value={false} label="I agree that Quaff is awesome" class="q-mr-lg" />
-      <QBtn label="Click me" outline />
+      <QBtn label="Click me" outline onclick={() => alert("Wow you did it!")} />
     </div>
   </div>
 </div>
