@@ -25,6 +25,10 @@
 					<QIcon name="home" />
 					<QItemSection>Home</QItemSection>
 				</QItem>
+				<QItem href="https://quaff.dev" target="_blank">
+					<QIcon name="menu_book" />
+					<QItemSection>Quaff Docs</QItemSection>
+				</QItem>
 				<QItem href="https://github.com/quaffui/quaff" target="_blank">
 					<QIcon name="open_in_new" />
 					<QItemSection>Quaff GitHub</QItemSection>
