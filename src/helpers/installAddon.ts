@@ -21,7 +21,7 @@ export default async function installAddon(
     cmdAndArgs.unshift("npx");
   }
 
-  cmdAndArgs.push("--no-preconditions", "--no-install");
+  cmdAndArgs.push("--no-git-check", "--no-install");
 
   return await runCmdAndAssertSuccess(cmdAndArgs[0]!, cmdAndArgs.slice(1), projectDir);
 }
