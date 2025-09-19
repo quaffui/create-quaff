@@ -1,3 +1,5 @@
+name: Publish Package to npmjs
+
 on:
   workflow_dispatch:
     inputs:
@@ -8,12 +10,13 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: 1.2.19
+          bun-version: 1.2.22
           registry-url: "https://registry.npmjs.org"
 
       - name: Set version in package.json
