@@ -24,9 +24,9 @@ const {
 
 await mkdir(projectDir);
 
-function getTypes(language: string) {
+function getTypes(language: string): "typescript" | "checkjs" | "none" {
   if (["typescript", "checkjs"].includes(language)) {
-    return language;
+    return language as "typescript" | "checkjs";
   }
 
   return "none";
