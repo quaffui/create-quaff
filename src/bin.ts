@@ -22,7 +22,7 @@ const {
   installDependencies,
 } = await executePrompts();
 
-await mkdir(projectDir);
+await mkdir(projectDir, { recursive: true });
 
 function getTypes(language: string): "typescript" | "checkjs" | "none" {
   if (["typescript", "checkjs"].includes(language)) {
