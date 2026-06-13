@@ -77,21 +77,17 @@ export default class AddAutoimportCommand {
 
     let contents = await readFile(filePath, "utf8");
     const importStatement = `import autoImport from 'sveltekit-autoimport';`;
-    contents = contents.replace(/([\n\s]+export default)/, `\n${importStatement}$1`);
-
-    contents = contents.replace(
-      "sveltekit()",
-      `
-\t\tautoImport({
+    const autoImportConfig = `autoImport({
 \t\t\tconfigFile: false,
 \t\t\tmodule: {
 \t\t\t\t'@quaffui/quaff': [
 ${quaffComponents.map((name) => `\t\t\t\t'${name}',`).join("\n")}
 \t\t\t\t]
 \t\t\t}
-\t\t}),
-\t\tsveltekit()\n\t`
-    );
+\t\t}),`;
+
+    contents = contents.replace(/([\n\s]+export default)/, `\n${importStatement}$1`);
+    contents = contents.replace(/(\n\s*)sveltekit\(/, `$1${autoImportConfig}$1sveltekit(`);
 
     await writeFile(filePath, contents, "utf8");
   }
