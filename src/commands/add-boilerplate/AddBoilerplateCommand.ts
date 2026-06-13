@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/filename-case */
 import { join } from "path";
 import { readFile, writeFile, copyFile } from "fs/promises";
 import mustache from "mustache";
