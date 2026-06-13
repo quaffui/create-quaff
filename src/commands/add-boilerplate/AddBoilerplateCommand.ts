@@ -27,7 +27,7 @@ export default class AddBoilerplateCommand {
   ) {}
 
   get styleExtension() {
-    return ["scss", "sass"].includes(this.cssPreprocessor) ? this.cssPreprocessor : "css";
+    return this.cssPreprocessor === "scss" ? "scss" : "css";
   }
 
   async readProjectFile(relativePath: string) {
@@ -98,12 +98,7 @@ export default class AddBoilerplateCommand {
 
     await mkdirp(stylesPath);
 
-    const styleImports = ["@quaffui/quaff/css/index.css", Packages.FONTSOURCE_ROBOTO];
-
-    const mapStyle =
-      this.styleExtension === "sass"
-        ? (name: string) => `@use ${name}`
-        : (name: string) => `@use "${name}";`;
+    const styleImports = [`${Packages.QUAFF}/css/index.css`, Packages.FONTSOURCE_ROBOTO];
 
     const fontFaces = ["Outlined", "Rounded", "Sharp"]
       .map(
@@ -119,9 +114,19 @@ export default class AddBoilerplateCommand {
       )
       .join("\n");
 
-    const contents = styleImports.map(mapStyle).join("\n") + "\n" + fontFaces + "\n";
+    const styleImportsStr = styleImports.map((name) => this.formatStyleImport(name)).join("\n");
+
+    const contents = `${styleImportsStr}\n${fontFaces}\n`;
 
     await this.writeProjectFile(`src/styles/app.${this.styleExtension}`, contents);
+  }
+
+  formatStyleImport(name: string) {
+    if (this.styleExtension === "css") {
+      return `@import "${name}";`;
+    }
+
+    return `@use "${name}";`;
   }
 
   async copyFavicon() {
