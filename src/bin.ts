@@ -46,7 +46,8 @@ async function getPackageManagerForAddons() {
 // call before "create", to not create an incomplete project
 const packageManagerForAddons = await getPackageManagerForAddons();
 
-await create(projectDir, {
+await create({
+  cwd: projectDir,
   name: packageName,
   template: "minimal",
   types: getTypes(language),
