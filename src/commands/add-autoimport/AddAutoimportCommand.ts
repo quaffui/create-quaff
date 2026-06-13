@@ -20,6 +20,7 @@ const quaffComponents = [
   "QCodeBlock",
   "QDialog",
   "QDrawer",
+  "QExpansionItem",
   "QFooter",
   "QHeader",
   "QIcon",
@@ -30,6 +31,7 @@ const quaffComponents = [
   "QItem",
   "QItemSection",
   "QLinearProgress",
+  "QMenu",
   "QRadio",
   "QRailbar",
   "QSeparator",
@@ -80,6 +82,7 @@ export default class AddAutoimportCommand {
       "sveltekit()",
       `
 \t\tautoImport({
+\t\t\tconfigFile: false,
 \t\t\tmodule: {
 \t\t\t\t'@quaffui/quaff': [
 ${quaffComponents.map((name) => `\t\t\t\t'${name}',`).join("\n")}
