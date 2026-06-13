@@ -3,6 +3,8 @@
   import { Quaff } from '@quaffui/quaff';
 
   let { children } = $props();
+
+  Quaff.init();
 </script>
 
 <QLayout class="main-layout">
