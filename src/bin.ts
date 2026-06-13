@@ -65,7 +65,7 @@ const devDependencies: PackageJson["devDependencies"] = {
   [Packages.FONTSOURCE_ROBOTO]: await getLatestDependencyVersion(Packages.FONTSOURCE_ROBOTO),
 };
 
-if (["scss", "sass"].includes(cssPreprocessor)) {
+if (cssPreprocessor === "scss") {
   devDependencies[Packages.SASS] = await getLatestDependencyVersion(Packages.SASS);
 }
 

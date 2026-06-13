@@ -65,7 +65,6 @@ export default async function executePrompts() {
     initial: 0,
     choices: [
       { title: "Sass (SCSS)", value: "scss" },
-      { title: "Sass (SASS)", value: "sass" },
       { title: "None (CSS)", value: "none" },
     ],
   });
