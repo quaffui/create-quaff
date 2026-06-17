@@ -76,18 +76,20 @@ export default class AddAutoimportCommand {
     const filePath = join(this.projectDir, `vite.config.${this.usesTypescript ? "ts" : "js"}`);
 
     let contents = await readFile(filePath, "utf8");
-    const importStatement = `import autoImport from 'sveltekit-autoimport';`;
-    const autoImportConfig = `autoImport({
+    const importStatements = `import autoImport from 'sveltekit-autoimport';
+import { quaffCss } from '@quaffui/quaff/plugins/css';`;
+    const pluginConfig = `autoImport({
 \t\t\tconfigFile: false,
 \t\t\tmodule: {
 \t\t\t\t'@quaffui/quaff': [
 ${quaffComponents.map((name) => `\t\t\t\t'${name}',`).join("\n")}
 \t\t\t\t]
 \t\t\t}
-\t\t}),`;
+\t\t}),
+\t\tquaffCss(),`;
 
-    contents = contents.replace(/([\n\s]+export default)/, `\n${importStatement}$1`);
-    contents = contents.replace(/(\n\s*)sveltekit\(/, `$1${autoImportConfig}$1sveltekit(`);
+    contents = contents.replace(/([\n\s]+export default)/, `\n${importStatements}$1`);
+    contents = contents.replace(/(\n\s*)sveltekit\(/, `$1${pluginConfig}$1sveltekit(`);
 
     await writeFile(filePath, contents, "utf8");
   }

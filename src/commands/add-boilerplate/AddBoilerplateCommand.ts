@@ -99,7 +99,7 @@ export default class AddBoilerplateCommand {
 
     await mkdirp(stylesPath);
 
-    const styleImports = [`${Packages.QUAFF}/css/index.css`, Packages.FONTSOURCE_ROBOTO];
+    const styleImports = [Packages.FONTSOURCE_ROBOTO];
 
     const fontFaces = ["Outlined", "Rounded", "Sharp"]
       .map(
