@@ -28,3 +28,9 @@ jobs:
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
           bun install --frozen-lockfile
           bun publish --access public
+
+  generated-project-e2e:
+    needs: publish
+    uses: quaffui/quaff-shared/.github/workflows/generated-project-e2e.yml@main
+    with:
+      package-under-test: published
