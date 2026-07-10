@@ -60,7 +60,7 @@ export default [
             camelCase: true,
             pascalCase: true,
           },
-          ignore: ["\\.shim\\.d\\.ts$"],
+          ignore: ["\\.shim\\.d\\.ts$", "^Add.+\\.ts$"],
         },
       ],
       curly: ["error"],
