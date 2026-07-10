@@ -11,13 +11,12 @@
   {#snippet header()}
     <QHeader class="elevate-2">
       <QToolbarTitle>{{projectName}}</QToolbarTitle>
-      <QBtn
+      <QIconBtn
         icon={Quaff.darkMode.isActive ? 'light_mode' : 'dark_mode'}
         flat
-        round
         onclick={Quaff.darkMode.toggle}
       />
-      <QBtn icon="help" flat />
+      <QIconBtn icon="help" flat />
     </QHeader>
   {/snippet}
   {#snippet railbarLeft()}
