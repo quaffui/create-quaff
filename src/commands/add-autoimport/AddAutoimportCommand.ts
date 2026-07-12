@@ -1,7 +1,6 @@
 import { join } from "path";
 import { readFile, writeFile } from "fs/promises";
-import getLatestDependencyVersion from "../../helpers/getLatestDependencyVersion.js";
-import { Packages } from "../../types.js";
+import { Packages, PackageVersions } from "../../types.js";
 import addToPackageJson from "../../helpers/addToPackageJson.js";
 import pathExists from "../../helpers/pathExists.js";
 import mkdirp from "../../helpers/mkdirp.js";
@@ -58,9 +57,7 @@ export default class AddAutoimportCommand {
   async execute() {
     await addToPackageJson(this.projectDir, {
       devDependencies: {
-        [Packages.SVELTEKIT_AUTOIMPORT]: await getLatestDependencyVersion(
-          Packages.SVELTEKIT_AUTOIMPORT
-        ),
+        [Packages.SVELTEKIT_AUTOIMPORT]: PackageVersions.SVELTEKIT_AUTOIMPORT,
       },
     });
 
