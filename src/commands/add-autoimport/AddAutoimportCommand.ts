@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/filename-case */
 import { join } from "path";
 import { readFile, writeFile } from "fs/promises";
 import getLatestDependencyVersion from "../../helpers/getLatestDependencyVersion.js";
@@ -12,6 +11,7 @@ const quaffComponents = [
   "QBreadcrumbs",
   "QBreadcrumbsEl",
   "QBtn",
+  "QIconBtn",
   "QCard",
   "QCardSection",
   "QCardActions",

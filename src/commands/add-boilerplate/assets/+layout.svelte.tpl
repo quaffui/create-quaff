@@ -14,7 +14,6 @@
       <QBtn
         icon={Quaff.darkMode.isActive ? 'light_mode' : 'dark_mode'}
         flat
-        round
         onclick={Quaff.darkMode.toggle}
       />
       <QBtn icon="help" flat />
