@@ -23,6 +23,7 @@ const quaffComponents = [
   "QExpansionItem",
   "QFooter",
   "QHeader",
+  "QHeaderTitle",
   "QIcon",
   "QInput",
   "QSelect",
@@ -39,8 +40,6 @@ const quaffComponents = [
   "QTab",
   "QTable",
   "QSwitch",
-  "QToolbar",
-  "QToolbarTitle",
   "QTooltip",
 ];
 
