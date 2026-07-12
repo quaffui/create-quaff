@@ -11,15 +11,10 @@ export default async function getLatestDependencyVersion(packageName: string): P
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
-  const packageData = (await response.json()) as PackageData;
-  let { version } = packageData;
+  const { version } = (await response.json()) as PackageData;
 
   if (!version || typeof version !== "string") {
     throw new Error(`could not find a valid version for dependency "${packageName}"`);
-  }
-
-  if (!version.startsWith("^")) {
-    version = "^" + version;
   }
 
   return version;

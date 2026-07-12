@@ -4,7 +4,7 @@ import { create } from "sv";
 import executePrompts from "./executePrompts.js";
 import getLatestDependencyVersion from "./helpers/getLatestDependencyVersion.js";
 import install from "./helpers/install.js";
-import { Packages } from "./types.js";
+import { Packages, PackageVersions } from "./types.js";
 import AddAutoimportCommand from "./commands/add-autoimport/AddAutoimportCommand.js";
 import AddBoilerplateCommand from "./commands/add-boilerplate/AddBoilerplateCommand.js";
 import addToPackageJson from "./helpers/addToPackageJson.js";
@@ -62,12 +62,12 @@ if (optionalFeatures.includes("eslintAndPrettier")) {
 
 const devDependencies: PackageJson["devDependencies"] = {
   [Packages.QUAFF]: await getLatestDependencyVersion(Packages.QUAFF),
-  [Packages.MATERIAL_SYMBOLS]: await getLatestDependencyVersion(Packages.MATERIAL_SYMBOLS),
-  [Packages.FONTSOURCE_ROBOTO]: await getLatestDependencyVersion(Packages.FONTSOURCE_ROBOTO),
+  [Packages.MATERIAL_SYMBOLS]: PackageVersions.MATERIAL_SYMBOLS,
+  [Packages.FONTSOURCE_ROBOTO]: PackageVersions.FONTSOURCE_ROBOTO,
 };
 
 if (cssPreprocessor === "scss") {
-  devDependencies[Packages.SASS] = await getLatestDependencyVersion(Packages.SASS);
+  devDependencies[Packages.SASS] = PackageVersions.SASS;
 }
 
 await addToPackageJson(projectDir, {
