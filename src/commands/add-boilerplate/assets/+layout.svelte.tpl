@@ -10,7 +10,7 @@
 <QLayout class="main-layout">
   {#snippet header()}
     <QHeader class="elevate-2">
-      <QToolbarTitle>{{projectName}}</QToolbarTitle>
+      <QHeaderTitle>{{projectName}}</QHeaderTitle>
       <QBtn
         icon={Quaff.darkMode.isActive ? 'light_mode' : 'dark_mode'}
         flat
