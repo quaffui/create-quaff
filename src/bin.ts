@@ -64,6 +64,7 @@ const devDependencies: PackageJson["devDependencies"] = {
   [Packages.QUAFF]: await getLatestDependencyVersion(Packages.QUAFF),
   [Packages.MATERIAL_SYMBOLS]: PackageVersions.MATERIAL_SYMBOLS,
   [Packages.FONTSOURCE_ROBOTO]: PackageVersions.FONTSOURCE_ROBOTO,
+  [Packages.ESBUILD]: PackageVersions.ESBUILD,
 };
 
 if (cssPreprocessor === "scss") {
