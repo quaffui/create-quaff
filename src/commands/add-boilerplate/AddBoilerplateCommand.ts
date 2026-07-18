@@ -43,7 +43,7 @@ export default class AddBoilerplateCommand {
   }
 
   async execute() {
-    await this.addLightClassToApp();
+    await this.addDisplayModeScriptToApp();
 
     await this.createPage();
 
@@ -56,14 +56,22 @@ export default class AddBoilerplateCommand {
     await this.createAutoimportTypes();
   }
 
-  async addLightClassToApp() {
+  async addDisplayModeScriptToApp() {
     const appContents = await this.readProjectFile(BoilerplateFiles.APP);
+    const script = `<script>
+      let displayMode = localStorage.getItem("displayMode");
+
+      if (displayMode !== "dark" && displayMode !== "light") {
+        displayMode = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+
+      document.documentElement.style.colorScheme = displayMode;
+      document.body.classList.add("body--" + displayMode);
+    </script>`;
+
     await this.writeProjectFile(
       BoilerplateFiles.APP,
-      appContents.replace(
-        '<body data-sveltekit-preload-data="hover">',
-        '<body data-sveltekit-preload-data="hover" class="body--light">'
-      )
+      appContents.replace("%sveltekit.body%", `${script}\n\n    %sveltekit.body%`)
     );
   }
 
