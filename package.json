@@ -18,14 +18,14 @@
   "dependencies": {
     "mustache": "^4.2.0",
     "prompts": "^2.4.2",
-    "sv": "^0.16.6",
-    "undici": "^8.10.0"
+    "sv": "^0.17.0",
+    "undici": "^8.10.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.11",
     "@types/mustache": "^4.2.6",
     "@types/prompts": "^2.4.9",
-    "bun-types": "^1.4.0",
-    "typescript": "^6.0.3"
+    "bun-types": "^1.4.2",
+    "typescript": "^7.0.2"
   }
 }
