@@ -2,6 +2,10 @@
   "name": "create-quaff",
   "version": "0.0.0",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quaffui/create-quaff.git"
+  },
   "type": "module",
   "bin": {
     "create-quaff": "./dist/bin.js"
