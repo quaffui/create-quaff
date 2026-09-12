@@ -35,7 +35,7 @@ jobs:
       - name: Publish to npm
         run: |
           bun install --frozen-lockfile
-          npm publish --access public
+          npm publish --access public --tag latest
 
       - name: Create GitHub release
         env:
