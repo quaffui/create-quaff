@@ -10,7 +10,7 @@ if (hasProxy && !isBun) {
 
 export default async function fetchWrapper(url: string) {
   if (!hasProxy) {
-    return await fetch(url);
+    return await (isBun ? fetch(url) : fetchUndici(url));
   }
 
   console.log(`Using detected proxy: ${proxy}`);
