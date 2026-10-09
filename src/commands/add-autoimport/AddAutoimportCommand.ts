@@ -79,7 +79,7 @@ export default class AddAutoimportCommand {
 
     let contents = await readFile(filePath, "utf8");
     const importStatements = `import autoImport from 'sveltekit-autoimport';
-import { quaffCss } from '@quaffui/quaff/plugins/css';`;
+import { quaffAssets } from '@quaffui/quaff/plugins/assets';`;
     const pluginConfig = `autoImport({
 \t\t\tconfigFile: false,
 \t\t\tmodule: {
@@ -88,7 +88,7 @@ ${quaffComponents.map((name) => `\t\t\t\t'${name}',`).join("\n")}
 \t\t\t\t]
 \t\t\t}
 \t\t}),
-\t\tquaffCss(),`;
+\t\tquaffAssets(),`;
 
     contents = contents.replace(/([\n\s]+export default)/, `\n${importStatements}$1`);
     contents = contents.replace(/(\n\s*)sveltekit\(/, `$1${pluginConfig}$1sveltekit(`);
