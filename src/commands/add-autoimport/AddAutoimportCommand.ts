@@ -52,7 +52,9 @@ const quaffComponents = [
 export default class AddAutoimportCommand {
   constructor(
     public projectDir: string,
-    public language: string | null
+    public language: string | null,
+    public shouldPruneCss: boolean,
+    public shouldPruneIcons: boolean
   ) {}
 
   get usesTypescript() {
@@ -88,7 +90,21 @@ ${quaffComponents.map((name) => `\t\t\t\t'${name}',`).join("\n")}
 \t\t\t\t]
 \t\t\t}
 \t\t}),
-\t\tquaffAssets(),`;
+\t\tquaffAssets({
+\t\t\tcss: {
+\t\t\t\tstripUnused: ${this.shouldPruneCss},
+\t\t\t\t// Add class names from runtime data that aren't present in your source.
+\t\t\t\tsafelist: [],
+\t\t\t},
+\t\t\tfonts: {
+\t\t\t\troboto: { formats: ['woff2'] },
+\t\t\t\ticons: {
+\t\t\t\t\tstripUnused: ${this.shouldPruneIcons},
+\t\t\t\t\t// Add icon names from runtime data that aren't present in your source.
+\t\t\t\t\tsafelist: [],
+\t\t\t\t},
+\t\t\t},
+\t\t}),`;
 
     contents = contents.replace(/([\n\s]+export default)/, `\n${importStatements}$1`);
     contents = contents.replace(/(\n\s*)sveltekit\(/, `$1${pluginConfig}$1sveltekit(`);

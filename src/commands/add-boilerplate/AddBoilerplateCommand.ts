@@ -2,7 +2,6 @@ import { join } from "path";
 import { readFile, writeFile, copyFile } from "fs/promises";
 import mustache from "mustache";
 import mkdirp from "../../helpers/mkdirp.js";
-import { Packages } from "../../types.js";
 
 enum BoilerplateFiles {
   APP = "src/app.html",
@@ -106,35 +105,10 @@ export default class AddBoilerplateCommand {
 
     await mkdirp(stylesPath);
 
-    const styleImports = [Packages.FONTSOURCE_ROBOTO];
-
-    const fontFaces = ["Outlined", "Rounded", "Sharp"]
-      .map(
-        (name: string) => `
-@font-face {
-  font-family: "Material Symbols ${name}";
-  src: url("material-symbols/material-symbols-${name.toLowerCase()}.woff2") format("woff2");
-
-  font-style: normal;
-  font-weight: 100 700;
-  font-display: block;
-}`
-      )
-      .join("\n");
-
-    const styleImportsStr = styleImports.map((name) => this.formatStyleImport(name)).join("\n");
-
-    const contents = `${styleImportsStr}\n${fontFaces}\n`;
-
-    await this.writeProjectFile(`src/styles/app.${this.styleExtension}`, contents);
-  }
-
-  formatStyleImport(name: string) {
-    if (this.styleExtension === "css") {
-      return `@import "${name}";`;
-    }
-
-    return `@use "${name}";`;
+    await this.writeProjectFile(
+      `src/styles/app.${this.styleExtension}`,
+      "/* Add your application styles here. */\n"
+    );
   }
 
   async copyFavicon() {
