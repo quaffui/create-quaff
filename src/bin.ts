@@ -18,6 +18,7 @@ const {
   packageName,
   language,
   cssPreprocessor,
+  assetPruning,
   optionalFeatures,
   installDependencies,
 } = await executePrompts();
@@ -36,7 +37,7 @@ async function getPackageManagerForAddons() {
   const packageManagerForAddons =
     installDependencies !== "no" ? installDependencies : (await getPackageManagers())[0];
 
-  if (optionalFeatures.length && !packageManagerForAddons) {
+  if (optionalFeatures.includes("eslintAndPrettier") && !packageManagerForAddons) {
     throw new Error("Could not find a package manager (e.g. bun, npm) installed on your system");
   }
 
@@ -75,7 +76,12 @@ await addToPackageJson(projectDir, {
   devDependencies,
 });
 
-const addAutoimportCommand = new AddAutoimportCommand(projectDir, language);
+const addAutoimportCommand = new AddAutoimportCommand(
+  projectDir,
+  language,
+  ["css", "both"].includes(assetPruning),
+  ["icons", "both"].includes(assetPruning)
+);
 
 await addAutoimportCommand.execute();
 

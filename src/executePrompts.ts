@@ -71,6 +71,21 @@ export default async function executePrompts() {
 
   exitIfUndefined(cssPreprocessor);
 
+  const { assetPruning } = await prompts({
+    type: "select",
+    name: "assetPruning",
+    message: "Prune unused CSS and icons?",
+    initial: 0,
+    choices: [
+      { title: "None", value: "none" },
+      { title: "CSS only", value: "css" },
+      { title: "Icons only", value: "icons" },
+      { title: "CSS and icons", value: "both" },
+    ],
+  });
+
+  exitIfUndefined(assetPruning);
+
   const { optionalFeatures } = await prompts({
     type: "multiselect",
     name: "optionalFeatures",
@@ -112,6 +127,7 @@ export default async function executePrompts() {
     language,
     packageName,
     cssPreprocessor,
+    assetPruning,
     optionalFeatures,
     installDependencies,
     packageManagers,
