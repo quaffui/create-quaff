@@ -19,9 +19,9 @@ export enum Packages {
 }
 
 export enum PackageVersions {
-  SASS = "1.103.1",
+  SASS = "1.105.1",
   FONTSOURCE_ROBOTO = "5.3.0",
-  MATERIAL_SYMBOLS = "0.47.0",
+  MATERIAL_SYMBOLS = "0.47.6",
   ESBUILD = "0.28.2",
   SVELTEKIT_AUTOIMPORT = "1.8.2",
 }

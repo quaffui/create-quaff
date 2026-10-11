@@ -26,8 +26,11 @@ export default class AddAutoimportCommand {
 
     await this.addToViteConfig();
 
-    if (this.usesTypescript) {
+    if (this.usesTypescript || this.language === "checkjs") {
       await this.addTypescriptDeclarations();
+    }
+
+    if (this.usesTypescript) {
       await this.addTypescriptVscodeSettings();
     }
   }
